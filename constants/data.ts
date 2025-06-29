@@ -1,35 +1,39 @@
 import icons from "./icons";
 import images from "./images";
 
-export const cards = [
+export const propertyCards = [
   {
-    title: "Card 1",
-    location: "Location 1",
-    price: "$100",
+    id: 1,
+    title: "La Grand Maison",
+    location: "Tokyo, Japan",
+    price: "1000",
     rating: 4.8,
     category: "house",
     image: images.newYork,
   },
   {
-    title: "Card 2",
-    location: "Location 2",
-    price: "$200",
+    id: 2,
+    title: "Elegant Villa",
+    location: "Lagos, Nigeria",
+    price: "1424",
     rating: 3,
     category: "house",
     image: images.japan,
   },
   {
-    title: "Card 3",
-    location: "Location 3",
-    price: "$300",
+    id: 3,
+    title: "Property Five",
+    location: "Cairo, Egypt",
+    price: "2390",
     rating: 2,
     category: "flat",
     image: images.newYork,
   },
   {
-    title: "Card 4",
-    location: "Location 4",
-    price: "$400",
+    id: 4,
+    title: "Five Star Villa",
+    location: "Tokyo, Japan",
+    price: "54000",
     rating: 5,
     category: "villa",
     image: images.japan,
@@ -38,17 +42,19 @@ export const cards = [
 
 export const featuredCards = [
   {
-    title: "Featured 1",
-    location: "Location 1",
-    price: "$100",
+    id: 1,
+    title: "Merialla Villa",
+    location: "New York, US",
+    price: "12219",
     rating: 4.8,
     image: images.newYork,
     category: "house",
   },
   {
-    title: "Featured 2",
-    location: "Location 2",
-    price: "$200",
+    id: 2,
+    title: "Modernica Apartment",
+    location: "New York, US",
+    price: "22452",
     rating: 3,
     image: images.japan,
     category: "flat",
@@ -56,15 +62,15 @@ export const featuredCards = [
 ];
 
 export const categories = [
-  { title: "All", category: "All" },
-  { title: "Houses", category: "House" },
-  { title: "Condos", category: "Condos" },
-  { title: "Duplexes", category: "Duplexes" },
-  { title: "Studios", category: "Studios" },
-  { title: "Villas", category: "Villa" },
-  { title: "Apartments", category: "Apartments" },
-  { title: "Townhomes", category: "Townhomes" },
-  { title: "Others", category: "Others" },
+  { id: 1, category: "All" },
+  { id: 2, category: "House" },
+  { id: 3, category: "Condos" },
+  { id: 4, category: "Duplexes" },
+  { id: 5, category: "Studios" },
+  { id: 6, category: "Villa" },
+  { id: 7, category: "Apartments" },
+  { id: 8, category: "Townhomes" },
+  { id: 9, category: "Others" },
 ];
 
 export const settings = [

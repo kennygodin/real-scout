@@ -1,5 +1,6 @@
 import icons from "@/constants/icons";
 import { Property } from "@/types/property.types";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
@@ -8,10 +9,14 @@ interface FeaturedCardsProps {
 }
 
 const FeaturedCards = ({ property }: FeaturedCardsProps) => {
+  const router = useRouter();
   const [isBookmark, setIsBookmark] = useState(false);
 
   return (
-    <TouchableOpacity className="relative h-[340px] rounded-3xl overflow-hidden">
+    <TouchableOpacity
+      onPress={() => router.push(`/property/${property.id}`)}
+      className="relative h-[340px] rounded-3xl overflow-hidden"
+    >
       <Image source={property.image} className="w-[250px] h-full" />
       <View className="absolute top-10 right-5 bg-white flex-row items-center gap-2 px-3 py-1 rounded-full">
         <Image source={icons.star} className="size-6" />

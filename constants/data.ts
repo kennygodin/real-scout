@@ -154,7 +154,7 @@ export const gallery = [
   },
   {
     id: 3,
-    image: images.newYork,
+    image: images.estate,
   },
   {
     id: 4,

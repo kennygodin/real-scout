@@ -7,7 +7,21 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#0061FF",
+        dark: "#191D31",
+        lightdark: "#666876",
+      },
+      fontFamily: {
+        rubik: "Rubik",
+        "rubik-bold": "Rubik-Bold",
+        "rubik-extrabold": "Rubik-ExtraBold",
+        "rubik-light": "Rubik-Light",
+        "rubik-medium": "Rubik-Medium",
+        "rubik-semibold": "Rubik-SemiBold",
+      },
+    },
   },
   plugins: [],
 };

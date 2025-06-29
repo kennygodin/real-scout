@@ -1,11 +1,6 @@
-import { Text, View } from "react-native";
+import { Redirect } from "expo-router";
 
 export default function Index() {
-  return (
-    <View className="flex-1 items-center justify-center">
-      <Text className="text-4xl text-slate-500">
-        Welcome!!
-      </Text>
-    </View>
-  );
+  // TODO: check if user is signed in
+  return <Redirect href="/auth/auth" />;
 }

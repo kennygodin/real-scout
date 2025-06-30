@@ -22,8 +22,8 @@ const Home = () => {
   return (
     <PageWrapper>
       <ScrollView className="flex-1 mt-3" showsVerticalScrollIndicator={false}>
-        <View className="gap-y-5">
-          <View className="flex-row justify-between items-center mx-2">
+        <View className="gap-y-5 mx-2">
+          <View className="flex-row justify-between items-center">
             <View className="flex-row gap-2 items-center">
               <Image
                 source={images.avatar}
@@ -48,7 +48,7 @@ const Home = () => {
 
           <Search />
 
-          <View className="mx-2">
+          <View className="">
             <View className="flex-row justify-between items-center mb-3">
               <Text className="text-2xl font-rubik-semibold text-dark">
                 Featured
@@ -76,7 +76,7 @@ const Home = () => {
             />
           </View>
 
-          <View className="mx-2 gap-y-3">
+          <View className="gap-y-3">
             <View className="flex-row justify-between items-center">
               <Text className="text-2xl font-rubik-semibold text-dark">
                 Our Recommendation
@@ -108,6 +108,7 @@ const Home = () => {
               scrollEnabled={false}
               nestedScrollEnabled={false}
               ItemSeparatorComponent={() => <View className="h-2" />}
+              keyExtractor={(item) => item.id.toString()}
               columnWrapperStyle={{ gap: 8 }}
               renderItem={({ item }) => <PropertyCard property={item} />}
               numColumns={2}

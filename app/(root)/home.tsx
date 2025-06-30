@@ -31,7 +31,7 @@ const Home = () => {
                 resizeMode="cover"
               />
               <View>
-                <Text className="font-rubik-light tracking-tight text-lightdark">
+                <Text className="font-rubik tracking-tight text-lightdark">
                   Good Morning
                 </Text>
                 <Text className="font-rubik-medium text-xl tracking-wide mt-1 text-dark">
@@ -50,8 +50,12 @@ const Home = () => {
 
           <View className="mx-2">
             <View className="flex-row justify-between items-center mb-3">
-              <Text className="text-2xl font-rubik-medium">Featured</Text>
-              <Text className="text-primary font-rubik">See all</Text>
+              <Text className="text-2xl font-rubik-semibold text-dark">
+                Featured
+              </Text>
+              <TouchableOpacity>
+                <Text className="text-primary font-rubik-medium"> See all</Text>
+              </TouchableOpacity>
             </View>
 
             <FlatList
@@ -74,10 +78,12 @@ const Home = () => {
 
           <View className="mx-2 gap-y-3">
             <View className="flex-row justify-between items-center">
-              <Text className="text-2xl font-rubik-medium">
+              <Text className="text-2xl font-rubik-semibold text-dark">
                 Our Recommendation
               </Text>
-              <Text className="text-primary font-rubik">See all</Text>
+              <TouchableOpacity>
+                <Text className="text-primary font-rubik-medium"> See all</Text>
+              </TouchableOpacity>
             </View>
 
             <FlatList

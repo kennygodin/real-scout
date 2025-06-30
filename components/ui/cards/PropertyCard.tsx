@@ -1,5 +1,6 @@
 import icons from "@/constants/icons";
 import { Property } from "@/types/property.types";
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
@@ -8,10 +9,12 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ property }: PropertyCardProps) => {
+  const router = useRouter();
   const [isBookmark, setIsBookmark] = useState(false);
 
   return (
     <TouchableOpacity
+      onPress={() => router.push(`/property/${property.id}`)}
       className="relative flex-1 rounded-xl py-4 px-4 bg-white"
       style={{
         // iOS Shadow

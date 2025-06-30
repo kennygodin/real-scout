@@ -146,26 +146,27 @@ export const facilities = [
 export const gallery = [
   {
     id: 1,
-    image: images.newYork,
+    image:
+      "https://i.pinimg.com/736x/e4/0d/f9/e40df9938d5459f19b938a080363e6c5.jpg",
   },
   {
     id: 2,
-    image: images.japan,
+    image:
+      "https://i.pinimg.com/736x/15/a1/ff/15a1ff1c8d112a6eb50f570bb7bd9518.jpg",
   },
   {
     id: 3,
-    image: images.estate,
+    image:
+      "https://i.pinimg.com/736x/33/80/58/3380589d3796bf1a2dcbba9764ee94f0.jpg",
   },
   {
     id: 4,
-    image: images.japan,
+    image:
+      "https://i.pinimg.com/736x/91/4d/33/914d33582a69005b7c3e69a442cfc8ca.jpg",
   },
   {
     id: 5,
-    image: images.newYork,
-  },
-  {
-    id: 6,
-    image: images.japan,
+    image:
+      "https://i.pinimg.com/736x/6b/32/96/6b3296dc71732262965bf6edf80afec0.jpg",
   },
 ];

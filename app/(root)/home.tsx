@@ -54,7 +54,7 @@ const Home = () => {
                 Featured
               </Text>
               <TouchableOpacity>
-                <Text className="text-primary font-rubik"> See all</Text>
+                <Text className="text-primary font-rubik-medium"> See all</Text>
               </TouchableOpacity>
             </View>
 
@@ -82,7 +82,7 @@ const Home = () => {
                 Our Recommendation
               </Text>
               <TouchableOpacity>
-                <Text className="text-primary font-rubik"> See all</Text>
+                <Text className="text-primary font-rubik-medium"> See all</Text>
               </TouchableOpacity>
             </View>
 

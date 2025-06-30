@@ -1,182 +1,136 @@
+import PropertyAgent from "@/components/ui/property-details/PropertyAgent";
+import PropertyFacilities from "@/components/ui/property-details/PropertyFacilities";
+import PropertyGallery from "@/components/ui/property-details/PropertyGallery";
+import PropertyInfo from "@/components/ui/property-details/PropertyInfo";
+import PropertyLocation from "@/components/ui/property-details/PropertyLocation";
+import PropertyReview from "@/components/ui/property-details/PropertyReview";
+import PropertySlider from "@/components/ui/property-details/PropertySlider";
 import { facilities, gallery } from "@/constants/data";
-import icons from "@/constants/icons";
 import images from "@/constants/images";
-import React, { useRef } from "react";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
 import {
-  Dimensions,
   Image,
+  Platform,
   ScrollView,
-  StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-
-import Swiper from "react-native-swiper";
+import ImageView from "react-native-image-viewing";
 
 const PropertyDetails = () => {
-  const { height, width } = Dimensions.get("window");
-  const IMAGE_HEIGHT = height * (3 / 5);
+  const router = useRouter();
 
-  const swiperRef = useRef<Swiper>(null);
+  const [isImageViewVisible, setIsImageViewVisible] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const RenderFacilityItem = ({ item }: { item: any }) => (
-    <View
-      className="items-center justify-center mb-4 px-2"
-      style={{ width: width / 4 - 16 }}
-    >
-      <View className="p-3 bg-primary/5 rounded-full mb-2">
-        <Image source={item.icon} className="size-8" />
-      </View>
-      <Text
-        className="font-rubik text-center text-dark text-sm"
-        numberOfLines={1}
-        ellipsizeMode="tail"
-      >
-        {item.title}
-      </Text>
-    </View>
-  );
+  const imageViewerImages = gallery.map((item) => {
+    if (typeof item.image === "number") {
+      const resolvedSource = Image.resolveAssetSource(item.image);
+      return { uri: resolvedSource.uri };
+    }
+    return { uri: item.image };
+  });
+
+  const handleBookingPress = () => {
+    console.log("Booking pressed");
+    // router.push('/booking') or your booking logic
+  };
 
   return (
-    <ScrollView className="relative">
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="transparent"
-        translucent
-      />
+    <View className="flex-1 bg-white">
+      <ScrollView className="flex-1 mb-24" showsVerticalScrollIndicator={false}>
+        <PropertySlider />
+        <View className="m-4 gap-y-8">
+          <PropertyInfo
+            title="Modernica Apartment"
+            category="Apartment"
+            bedNumber={8}
+            bathNumber={3}
+            area={2000}
+            reviews={1275}
+          />
 
-      <View style={{ height: IMAGE_HEIGHT }}>
-        <Swiper
-          ref={swiperRef}
-          loop={false}
-          dot={<View className="w-2.5 h-2.5 mx-1 bg-[#E2E8F0] rounded-full" />}
-          activeDot={
-            <View className="w-7 h-2.5 mx-1 bg-primary rounded-full" />
-          }
-          paginationStyle={{
-            zIndex: 1,
-            bottom: 20,
+          <View className="h-0.5 bg-primary/10" />
+
+          <PropertyAgent name="Natasya Wilodra" profileImage={images.avatar} />
+
+          <View className="gap-y-3">
+            <Text className="text-2xl font-rubik-semibold text-dark">
+              Overview
+            </Text>
+            <Text className="font-rubik text-lightdark leading-9 text-xl">
+              Sleek, modern 2-bedroom apartment with open living space, high-end
+              finishes, and city views. Minutes from downtown, dining, and
+              transit.
+            </Text>
+          </View>
+
+          <PropertyFacilities facilities={facilities} />
+
+          <PropertyGallery
+            setCurrentImageIndex={setCurrentImageIndex}
+            setIsImageViewVisible={setIsImageViewVisible}
+          />
+
+          <PropertyLocation
+            latitude={40.7128}
+            longitude={-74.006}
+            latitudeDelta={0.01}
+            longitudeDelta={0.01}
+            address="Grand City St. 100, New York, United States"
+          />
+
+          <PropertyReview
+            name="Charolette Hanlin"
+            comment="The apartment is very clean and modern. I really like the interior design. Looks like I will feel at home 😍"
+            profileImage={images.avatar}
+            reviews={1275}
+            commentLikes={987}
+            time="6 hours ago"
+          />
+        </View>
+      </ScrollView>
+
+      <View className="absolute bottom-0 left-0 right-0 bg-white border-t border-r border-l border-gray-200 rounded-[30px] px-4 py-3">
+        <View className="flex-row items-center justify-between">
+          <View className="flex-1">
+            <Text className="text-sm font-rubik text-gray-500 uppercase tracking-wide">
+              PRICE
+            </Text>
+            <Text className="text-2xl font-rubik-bold text-primary">
+              $17821
+            </Text>
+          </View>
+
+          <TouchableOpacity
+            onPress={handleBookingPress}
+            className="bg-primary px-8 py-4 rounded-full ml-4"
+            activeOpacity={0.8}
+          >
+            <Text className="text-white font-rubik-semibold text-lg">
+              Booking Now
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        <View
+          style={{
+            height: Platform.OS === "ios" ? 20 : 0,
           }}
-        >
-          {gallery.map((item) => (
-            <View key={item.id}>
-              <Image
-                source={item.image}
-                className="w-full"
-                style={{ height: IMAGE_HEIGHT }}
-                resizeMode="cover"
-              />
-            </View>
-          ))}
-        </Swiper>
+        />
       </View>
 
-      <View className="flex-row gap-2 items-center absolute top-14 left-4 right-4">
-        <Image source={icons.backArrow} className="size-8" />
-        <View className="flex-row gap-4 items-center ml-auto">
-          <Image source={icons.heart} tintColor="black" className="size-8" />
-          <Image source={icons.send} className="size-8" />
-        </View>
-      </View>
-
-      <View className="m-4 gap-y-6">
-        <View className="gap-y-3">
-          <Text className="text-2xl font-rubik-semibold text-dark">
-            Modernica Apartment
-          </Text>
-          <View className="flex-row items-center gap-4">
-            <View className="bg-primary/5 rounded-full p-3">
-              <Text className="text-primary font-rubik-medium uppercase">
-                Apartment
-              </Text>
-            </View>
-            <View className="flex-row items-center gap-2">
-              <Image source={icons.star} />
-              <Text className="font-rubik text-lightdark">
-                4.8 (1,275 reviews)
-              </Text>
-            </View>
-          </View>
-          <View className="flex-row items-center gap-8">
-            <View className="flex-row items-center gap-2">
-              <View className="bg-primary/5 rounded-full p-3">
-                <Image source={icons.bed} className="size-6" />
-              </View>
-              <Text className="font-rubik text-dark">8 Beds</Text>
-            </View>
-            <View className="flex-row items-center gap-2">
-              <View className="bg-primary/5 rounded-full p-3">
-                <Image source={icons.bath} className="size-6" />
-              </View>
-              <Text className="font-rubik text-dark">3 bath</Text>
-            </View>
-            <View className="flex-row items-center gap-2">
-              <View className="bg-primary/5 rounded-full p-3">
-                <Image source={icons.area} className="size-6" />
-              </View>
-              <Text className="font-rubik text-dark">2000 sqft</Text>
-            </View>
-          </View>
-        </View>
-        <View className="h-0.5 bg-primary/10" />
-
-        <View className="gap-y-3">
-          <Text className="text-2xl font-rubik-semibold text-dark">Agent</Text>
-          <View className="flex-row items-center gap-4">
-            <View className="flex-row justify-between items-center ">
-              <View className="flex-row gap-4 items-center flex-1">
-                <Image
-                  source={images.avatar}
-                  className="w-20 h-20"
-                  resizeMode="cover"
-                />
-                <View>
-                  <Text className="font-rubik-medium text-xl tracking-wide mt-1 text-dark">
-                    Natasya Wilodra
-                  </Text>
-                  <Text className="font-rubik tracking-tight text-lg text-lightdark">
-                    Owner
-                  </Text>
-                </View>
-              </View>
-
-              <View className="flex-row items-center gap-5 ml-auto">
-                <TouchableOpacity>
-                  <Image source={icons.chat} className="size-8" />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <Image source={icons.phone} className="size-8" />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        </View>
-
-        <View className="gap-y-3">
-          <Text className="text-2xl font-rubik-semibold text-dark">
-            Overview
-          </Text>
-          <Text className="font-rubik text-lightdark leading-9 text-xl">
-            Sleek, modern 2-bedroom apartment with open living space, high-end
-            finishes, and city views. Minutes from downtown, dining, and
-            transit.
-          </Text>
-        </View>
-
-        <View className="gap-y-3">
-          <Text className="text-2xl font-rubik-semibold text-dark">
-            Facilities
-          </Text>
-
-          <View className="flex-row flex-wrap justify-between">
-            {facilities.map((item, index) => (
-              <RenderFacilityItem key={index} item={item} />
-            ))}
-          </View>
-        </View>
-      </View>
-    </ScrollView>
+      <ImageView
+        images={imageViewerImages}
+        imageIndex={currentImageIndex}
+        visible={isImageViewVisible}
+        onRequestClose={() => setIsImageViewVisible(false)}
+        swipeToCloseEnabled={true}
+        doubleTapToZoomEnabled={true}
+      />
+    </View>
   );
 };
 

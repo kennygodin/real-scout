@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <PageWrapper>
       <ScrollView className="flex-1 mt-3" showsVerticalScrollIndicator={false}>
-        <View className="gap-y-5 mx-2">
+        <View className="gap-y-5 mx-4">
           <View className="flex-row justify-between items-center">
             <View className="flex-row gap-2 items-center">
               <Image

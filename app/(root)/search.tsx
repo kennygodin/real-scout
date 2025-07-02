@@ -21,7 +21,7 @@ const SearchPage = () => {
   return (
     <PageWrapper>
       <ScrollView className="flex-1 mt-3" showsVerticalScrollIndicator={false}>
-        <View className="gap-y-5 mx-2">
+        <View className="gap-y-5 mx-4">
           <View className="flex-row justify-between items-center">
             <TouchableOpacity
               onPress={() => router.back()}
